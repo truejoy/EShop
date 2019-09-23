@@ -1,2 +1,0 @@
-# laravecommerce
-Ecommerce in Laravel
