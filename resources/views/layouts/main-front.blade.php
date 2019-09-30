@@ -38,21 +38,29 @@
 </head>
 
 <body>
-    @include('includes.header')
-    
-    @yield('navbar')
+@include('includes.header')
 
-    @yield('content')
+@yield('navbar_upper')
 
-    @include('includes.footer')
+<!-- menu nav -->
+@include('includes.menu-nav')		
+<!-- menu nav -->
 
-    <!-- jQuery Plugins -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/nouislider.min.js"></script>
-    <script src="js/jquery.zoom.min.js"></script>
-    <script src="js/main.js"></script>
+@yield('navbar_down')
+
+@yield('breadcrumb')
+
+@yield('content')
+
+@include('includes.footer')
+
+<!-- jQuery Plugins -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/nouislider.min.js"></script>
+<script src="js/jquery.zoom.min.js"></script>
+<script src="js/main.js"></script>
     
 </body>
 
