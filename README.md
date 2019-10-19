@@ -1,2 +1,2 @@
-# laravecommerce
+# EShop
 Ecommerce in Laravel
