@@ -1,19 +1,16 @@
 <?php
-
-include "./ProductInterface.php";
-
+//use BusinessObjects\Discount;
 class Product implements productInterface
 {
     private $name;
-    private $model_number;
+    private $sku;
     private $image;
-    private $brand;
     private $category;
     private $sub_category;
-    private $size;
-    private $color;
-    private $is_available; //In-stock
-    private $expiary_date;
+    private $price;
+    private Discount $discount;
+    //private $is_available; //In-stock
+    //private $expiary_date;
     //private $product_type_id;
 
     public function displayAllProducts()

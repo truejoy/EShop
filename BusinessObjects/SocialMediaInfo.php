@@ -1,6 +1,6 @@
 <?php
 
-class SocialShare
+class SocialMediaInfo
 {
     private $facebook_user_id;
     private $twitter_user_id;
@@ -11,6 +11,8 @@ class SocialShare
         $this->facebook_user_id = $facebook_user_id;
     }
 
-    public function share($id)
-    { }
+    public function shareInSocialMedia($id)
+    {
+        //share something in social media
+    }
 }

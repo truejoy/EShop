@@ -1,6 +1,6 @@
 <?php
 
-namespace BusinessObjects\User;
+//namespace BusinessObjects\User;
 
 class User
 {

@@ -2,9 +2,12 @@
 
 include "./Products.php";
 
-class ProductType extends Product
+class ProductType
 {
-    //private $id;
+    //product type means book, cosmetics, clothes etc.
     private $name;
     private $description;
+
+    public function getUserInformation()
+    { }
 }
