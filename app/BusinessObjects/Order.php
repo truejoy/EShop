@@ -1,12 +1,14 @@
 <?php
 
+namespace App\BusinessObjects\Order;
+
 class Order
 {
     private $order_number;
     private $order_status;
     private $product_id;
     private $product_quantity;
-    //how to deal with multiple product
+    //how to deal with multiple product?
 
     public function calculateAllUnitsForAProduct()
     {

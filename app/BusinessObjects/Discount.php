@@ -1,6 +1,8 @@
 <?php
 
-class discount
+namespace App\BusinessObjects\Discount;
+
+class Discount
 {
     private $name;
     private $description;
