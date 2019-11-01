@@ -28,9 +28,8 @@ Route::get('checkout', function () {
 });
 
 Auth::routes();
+// Route::get('auth/logout', 'Auth\AuthController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('admin', function () {
-    return view('admin.dashboard');
-});
+Route::get('admin', 'Admin\AdminController@index');
