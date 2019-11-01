@@ -1,2 +1,0 @@
-# EShop
-Ecommerce in Laravel
