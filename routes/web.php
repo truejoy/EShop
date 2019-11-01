@@ -15,14 +15,18 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('products', function (){
+Route::get('products', function () {
     return view('products');
 });
 
-Route::get('product-details', function (){
+Route::get('product-details', function () {
     return view('product-details');
 });
 
-Route::get('checkout', function (){
+Route::get('checkout', function () {
     return view('checkout');
+});
+
+Route::get('admin', function () {
+    return view('admin.dashboard');
 });
