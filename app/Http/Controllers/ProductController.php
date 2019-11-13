@@ -45,13 +45,13 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, CreateProductModel $model)
+    public function store(Request $request, CreateProductModel $viewModel)
     {
         if (!$request->user()->hasRole('admin')) {
             return abort(401, 'This action is not allowed');
         }
 
-        $model->createProduct($request);
+        $viewModel->createProduct($request);
 
         return redirect('products/create');
     }

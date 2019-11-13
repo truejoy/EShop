@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Repositories\IProductRepository;
 
-use App\BusinessObjects\Product;
+use App\BusinessObjects\Product as BProduct;
 
 class ProductService
 {
@@ -15,8 +15,8 @@ class ProductService
         $this->_productRepository = $productRepository;
     }
 
-    public function addProduct(Product $product)
+    public function addProduct(BProduct $bProduct)
     {
-        $this->_productRepository->createProduct($product);
+        $this->_productRepository->createProduct($bProduct);
     }
 }

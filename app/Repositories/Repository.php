@@ -9,8 +9,6 @@ use App\Repositories\IRepository;
 
 class Repository implements IRepository
 {
-    // https://medium.com/employbl/use-the-repository-design-pattern-in-a-laravel-application-13f0b46a3dce
-    // model property on class instances
     protected $model;
 
     // constructor to bind model to repo

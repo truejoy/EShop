@@ -2,9 +2,7 @@
 
 namespace App\BusinessObjects;
 
-use App\BusinessObjects\Category as Category;
-
-class Product
+class Product implements IProduct
 {
     private $name;
     private $SKU;

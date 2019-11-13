@@ -4,15 +4,17 @@ namespace App\Repositories;
 
 use App\Repositories\Repository;
 
-// use App\Models\Product;
+use App\Models\Product;
+
+use App\BusinessObjects\Product as BProduct;
 
 class ProductRepository extends Repository implements IProductRepository
 {
     public function __construct()
     {
-        parent::__construct(new \App\Models\Product());
+        parent::__construct(new Product());
     }
-    public function createProduct(\App\BusinessObjects\Product $product)
+    public function createProduct(BProduct $product)
     {
         $data = [];
 

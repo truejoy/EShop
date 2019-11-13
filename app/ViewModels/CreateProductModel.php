@@ -2,14 +2,13 @@
 
 namespace App\ViewModels;
 
-use Illuminate\Http\Request;
-
 use App\Services\ProductService;
 
-class CreateProductModel
+use App\ViewModels\ICreateProductModel;
+
+class CreateProductModel implements ICreateProductModel
 {
     private $_productService;
-    private $_product;
 
     public function __construct(ProductService $productService)
     {
@@ -17,24 +16,16 @@ class CreateProductModel
     }
     public function createProduct($request)
     {
-        // $request_result = $request->input();
+        $product = resolve('App\BusinessObjects\Product');
 
-        // $data = array();
+        $product->setName($request->input('name'));
+        $product->setSKU($request->input('SKU'));
+        $product->setImages($request->input('images'));
+        $product->setCategory($request->input('category'));
+        $product->setSubCategory($request->input('sub_category'));
+        $product->setPrice($request->input('price'));
+        $product->setDiscount($request->input('discount'));
 
-        // foreach ($request_result as $key => $value) {
-        //     $data[$key] = $value;
-        // }
-
-        $this->_product = resolve('App\BusinessObjects\Product');
-
-        $this->_product->setName($request->input('name'));
-        $this->_product->setSKU($request->input('SKU'));
-        $this->_product->setImages($request->input('images'));
-        $this->_product->setCategory($request->input('category'));
-        $this->_product->setSubCategory($request->input('sub_category'));
-        $this->_product->setPrice($request->input('price'));
-        $this->_product->setDiscount($request->input('discount'));
-
-        $this->_productService->addProduct($this->_product);
+        $this->_productService->addProduct($product);
     }
 }
