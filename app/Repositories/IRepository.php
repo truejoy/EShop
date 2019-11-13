@@ -2,11 +2,13 @@
 
 namespace App\Repositories;
 
+use Illuminate\Database\Eloquent\Model;
+
 interface IRepository
 {
-    public function all();
-    public function create(array $data);
-    public function update(array $data, $id);
-    public function show($id);
+    public function readAll();
+    public function create($data);
+    public function read($id);
+    public function update($data, $id);
     public function delete($id);
 }

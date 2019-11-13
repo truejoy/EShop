@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('products', function () {
-    return view('products');
-});
+// Route::get('products', function () {
+//     return view('products');
+// });
+
+Route::resource('products', 'ProductController');
 
 Route::get('product-details', function () {
     return view('product-details');
@@ -28,7 +30,6 @@ Route::get('checkout', function () {
 });
 
 Auth::routes();
-// Route::get('auth/logout', 'Auth\AuthController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -1,11 +1,15 @@
 <?php
-// https://medium.com/employbl/use-the-repository-design-pattern-in-a-laravel-application-13f0b46a3dce
+
 namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Repositories\IRepository;
+
+
 class Repository implements IRepository
 {
+    // https://medium.com/employbl/use-the-repository-design-pattern-in-a-laravel-application-13f0b46a3dce
     // model property on class instances
     protected $model;
 
@@ -16,17 +20,22 @@ class Repository implements IRepository
     }
 
     // get all instances of model
-    public function all()
+    public function readAll()
     {
         return $this->model->all();
     }
     // create a new record in the database
-    public function create(array $data)
+    public function create($data)
     {
         return $this->model->create($data);
     }
+    // show the record with the given id
+    public function read($id)
+    {
+        return $this->model->findOrFail($id);
+    }
     // update record in the database
-    public function update(array $data, $id)
+    public function update($data, $id)
     {
         $record = $this->find($id);
         return $record->update($data);
@@ -36,11 +45,7 @@ class Repository implements IRepository
     {
         return $this->model->destroy($id);
     }
-    // show the record with the given id
-    public function show($id)
-    {
-        return $this->model->findOrFail($id);
-    }
+
     // get the associated model
     public function getModel()
     {

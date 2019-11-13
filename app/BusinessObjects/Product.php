@@ -1,6 +1,6 @@
 <?php
 
-namespace App\BusinessObjects\Product;
+namespace App\BusinessObjects;
 
 use App\BusinessObjects\Category as Category;
 
@@ -12,8 +12,8 @@ class Product
     private $category;
     private $sub_category;
     private $price;
-    private $discount;
-    private $is_available; //In-stock
+    private $discount; //discount class er object
+    // private $is_available; //In-stock
 
     public function __construct()
     { }
