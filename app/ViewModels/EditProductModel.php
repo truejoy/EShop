@@ -2,19 +2,19 @@
 
 namespace App\ViewModels;
 
+use App\ViewModels\IEditProductModel;
 use App\Services\IProductService;
 
-use App\ViewModels\ICreateProductModel;
-
-class CreateProductModel implements ICreateProductModel
+class EditProductModel implements IEditProductModel
 {
+    //
     private $_productService;
 
     public function __construct(IProductService $productService)
     {
         $this->_productService = $productService;
     }
-    public function createProduct($request)
+    public function updateProduct($request, $id)
     {
         $product = resolve('App\BusinessObjects\Product');
 
@@ -26,6 +26,6 @@ class CreateProductModel implements ICreateProductModel
         $product->setPrice($request->input('price'));
         $product->setDiscount($request->input('discount'));
 
-        $this->_productService->addProduct($product);
+        $this->_productService->updateProduct($product, $id);
     }
 }

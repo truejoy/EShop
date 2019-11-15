@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\ViewModels\CreateProductModel;
-
+use App\ViewModels\ICreateProductModel;
+use App\ViewModels\IEditProductModel;
+// use App\ViewModels\IViewProductModel;
+use App\Services\IProductService;
 use Illuminate\Http\Request;
 
-// use App\Models\Product;
+use App\Models\Product;
 
 
 class ProductController extends Controller
@@ -21,9 +23,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(IProductService $productService)
     {
-        //
+        $products = $productService->showAll();
+
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -45,7 +49,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, CreateProductModel $viewModel)
+    public function store(Request $request, ICreateProductModel $viewModel)
     {
         if (!$request->user()->hasRole('admin')) {
             return abort(401, 'This action is not allowed');
@@ -62,9 +66,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, IProductService $productService)
     {
         //
+        $product = $productService->show($id);
+
+        return view('products/show', compact('product'));
     }
 
     /**
@@ -75,7 +82,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+
+        return view('products/edit', compact('product'));
     }
 
     /**
@@ -85,9 +94,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, IEditProductModel $viewModel)
     {
         //
+        if (!$request->user()->hasRole('admin')) {
+            return abort(401, 'This action is not allowed');
+        }
+
+        $viewModel->updateProduct($request, $id);
+
+        return redirect('products');
     }
 
     /**
@@ -96,8 +112,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, IProductService $productService)
     {
-        //
+        $productService->deleteProduct($id);
+
+        return view('products/index');
     }
 }

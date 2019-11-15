@@ -1,4 +1,5 @@
 @extends('layouts.main-front')
+
 @section('navbar_upper')
 <!-- NAVIGATION -->
 <div id="navigation">
@@ -212,7 +213,7 @@
 @endsection
 
 @section('content')
-	
+
 <!-- HOME -->
 <div id="home">
 	<!-- container -->

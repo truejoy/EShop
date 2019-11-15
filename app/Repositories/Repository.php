@@ -35,7 +35,7 @@ class Repository implements IRepository
     // update record in the database
     public function update($data, $id)
     {
-        $record = $this->find($id);
+        $record = $this->model->find($id);
         return $record->update($data);
     }
     // remove record from the database

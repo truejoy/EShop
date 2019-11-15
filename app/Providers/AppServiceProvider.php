@@ -19,6 +19,14 @@ class AppServiceProvider extends ServiceProvider
             'App\ViewModels\CreateProductModel'
         );
         $this->app->bind(
+            'App\ViewModels\IEditProductModel',
+            'App\ViewModels\EditProductModel'
+        );
+        $this->app->bind(
+            'App\ViewModels\IViewProductModel',
+            'App\ViewModels\ViewProductModel'
+        );
+        $this->app->bind(
             'App\Services\IProductService',
             'App\Services\ProductService'
         );
