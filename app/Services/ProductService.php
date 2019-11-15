@@ -4,9 +4,11 @@ namespace App\Services;
 
 use App\Repositories\IProductRepository;
 
+use App\Services\IProductService;
+
 use App\BusinessObjects\Product as BProduct;
 
-class ProductService
+class ProductService implements IProductService
 {
     private $_productRepository;
 
