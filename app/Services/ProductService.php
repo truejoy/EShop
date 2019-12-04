@@ -16,11 +16,11 @@ class ProductService implements IProductService
     {
         $this->_productRepository = $productRepository;
     }
-    public function showAll()
+    public function showAllProducts()
     {
         return $this->_productRepository->readAll();
     }
-    public function show($id)
+    public function showAProduct($id)
     {
         return $this->_productRepository->read($id);
     }
@@ -30,10 +30,14 @@ class ProductService implements IProductService
     }
     public function updateProduct(BProduct $bProduct, $id)
     {
-        $this->_productRepository->updateProduct($bProduct, $id);
+        $this->_productRepository->updateProduct($bProduct);
     }
     public function deleteProduct($id)
     {
         return $this->_productRepository->deleteProduct($id);
+    }
+    public function getProduct($id)
+    {
+        // return $this->_productService->getProduct($id);
     }
 }

@@ -4,8 +4,17 @@ namespace App\ViewModels;
 
 use App\ViewModels\IViewProductModel;
 
-class viewProductModel implements IViewProductModel
+class ViewProductModel implements IViewProductModel
 {
-    public function showAll()
+    private $_products; // array
+
+    public function __construct(IProductService $productService)
+    { }
+    public function getAll()
+    {
+        $this_products = null;
+    }
+
+    public function getProduct()
     { }
 }
