@@ -11,12 +11,21 @@ class Product implements IProduct
     private $sub_category;
     private $price;
     private $discount; //discount class er object
+    private $id;
     // private $is_available; //In-stock
 
     public function __construct()
     { }
 
     // getters and setters
+    public function getID()
+    {
+        return $this->id;
+    }
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
     public function getName()
     {
         return $this->name;

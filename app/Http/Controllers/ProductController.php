@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\ViewModels\ICreateProductModel;
 use App\ViewModels\IEditProductModel;
-// use App\ViewModels\IViewProductModel;
 use App\Services\IProductService;
 use Illuminate\Http\Request;
 
@@ -25,9 +24,9 @@ class ProductController extends Controller
      */
     public function index(IProductService $productService)
     {
-        $products = $productService->showAll();
+        $products = $productService->showAllProducts();
 
-        return view('products.index', compact('products'));
+        // return view('products/index', compact('products'));
     }
 
     /**
@@ -69,7 +68,7 @@ class ProductController extends Controller
     public function show($id, IProductService $productService)
     {
         //
-        $product = $productService->show($id);
+        $product = $productService->showAProduct($id);
 
         return view('products/show', compact('product'));
     }
@@ -80,9 +79,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $product = Product::find($id);
+        if (!$request->user()->hasRole('admin')) {
+            return abort(401, 'This action is not allowed');
+        }
+
+        $model = resolve('App\ViewModels\IEditProductModel');
+
+        $product = $model->showAProduct($id);
 
         return view('products/edit', compact('product'));
     }
@@ -94,14 +99,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, IEditProductModel $viewModel)
+    public function update(Request $request, IEditProductModel $viewModel)
     {
         //
         if (!$request->user()->hasRole('admin')) {
             return abort(401, 'This action is not allowed');
         }
 
-        $viewModel->updateProduct($request, $id);
+        $viewModel->updateProduct();
 
         return redirect('products');
     }
